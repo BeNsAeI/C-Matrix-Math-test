@@ -34,7 +34,7 @@ void printMatrix(std::vector<int> m, int col)
     }
 }
 template <class T>
-std::vector<T> sum(std::vector<T> a, std::vector<T> b)
+std::vector<T> add(std::vector<T> a, std::vector<T> b)
 {
     std::vector<T> result = {};
     std::vector<int>::iterator itA = a.begin();
@@ -44,6 +44,22 @@ std::vector<T> sum(std::vector<T> a, std::vector<T> b)
     while (itA != a.end() && itB != b.end() && a.size() == b.size())
     {
         result.push_back(*itA + *itB);
+        itA++;
+        itB++;
+    }
+    return result;
+}
+template <class T>
+std::vector<T> sub(std::vector<T> a, std::vector<T> b)
+{
+    std::vector<T> result = {};
+    std::vector<int>::iterator itA = a.begin();
+    std::vector<int>::iterator itB = b.begin();
+    if (a.size() != b.size())
+        printf("err!\n");
+    while (itA != a.end() && itB != b.end() && a.size() == b.size())
+    {
+        result.push_back(*itA - *itB);
         itA++;
         itB++;
     }
@@ -74,19 +90,19 @@ int main()
     std::cout << "M2:" << std::endl;
     printMatrix(M2,C2);
     std::cout << "Z0 + Z0:" << std::endl;
-    printMatrix(sum<int>(Z0,Z0), C0);
+    printMatrix(add<int>(Z0,Z0), C0);
     std::cout << "I0 + I0:" << std::endl;
-    printMatrix(sum<int>(I0,I0), C0);
+    printMatrix(add<int>(I0,I0), C0);
     std::cout << "Z0 + M1:" << std::endl;
-    printMatrix(sum<int>(Z0,M1), C0);
+    printMatrix(add<int>(Z0,M1), C0);
     std::cout << "I0 + M1:" << std::endl;
-    printMatrix(sum<int>(I0,M1), C0);
+    printMatrix(add<int>(I0,M1), C0);
     std::cout << "M1 + M1:" << std::endl;
-    printMatrix(sum<int>(M1,M1), C1);
+    printMatrix(add<int>(M1,M1), C1);
     std::cout << "M2 + M2:" << std::endl;
-    printMatrix(sum<int>(M2,M2), C2);
+    printMatrix(add<int>(M2,M2), C2);
     std::cout << "M1 + M2:" << std::endl;
-    printMatrix(sum<int>(M1,M2), C1);
+    printMatrix(add<int>(M1,M2), C1);
     std::cout << "5 * I0:" << std::endl;
     printMatrix(mult<int>(5,I0), C0);
     std::cout << "7 * Z0:" << std::endl;
