@@ -81,6 +81,7 @@ std::vector<T> mult(std::vector<T> a, std::vector<T> b)
 }
 int main()
 {
+    std::cout << "Testing..." << std::endl;
     std::cout << "Z0:" << std::endl;
     printMatrix(Z0,C0);
     std::cout << "I0:" << std::endl;
